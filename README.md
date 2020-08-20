@@ -9,7 +9,9 @@ To install:
 -add dotfiles directory to home directory
 -create a symbolic link, example: ~/.vimrc ---> ~/dotfiles/.vimrc (or bashrc)
 
-    ln -s ~/dotfiles/.vimrc ~/.vimrc
-    
     # ln establishes a link; -s flag creates a 'soft' or symbolic link
     # ~ is shorthand for your home directory
+    
+    ln -s ~/dotfiles/.vimrc ~/.vimrc
+    
+   
