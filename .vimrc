@@ -11,7 +11,6 @@ filetype off " required
 call plug#begin('~/.vim/plugged')
 
 " plugins
-Plug 'VundleVim/Vundle.vim' "let Vundle manage Vundle, required
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 
 " ethan's default plugins and configs
@@ -30,9 +29,9 @@ augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Initialize plugin system
 call plug#end()
