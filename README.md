@@ -1,9 +1,9 @@
 dotfiles
 
 All dotfiles stored in the main directory of this repo. Current list includes:
--bashrc
 -vimrc
 -tmuc.conf
+-inputrc
 
 Setup:
 
