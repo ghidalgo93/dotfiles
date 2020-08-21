@@ -7,28 +7,40 @@ filetype off " required
 
 "****PLUGINS****
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-" Keep Plugin commands between vundle#begin/end.
-call vundle#begin()
+" begin vim-plug manager
+call plug#begin('~/.vim/plugged')
 
 " plugins
-Plugin 'VundleVim/Vundle.vim' "let Vundle manage Vundle, required
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'VundleVim/Vundle.vim' "let Vundle manage Vundle, required
+Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" ethan's default plugins and configs
+Plug 'mbbill/undotree' " keep undo through saves
+Plug 'jiangmiao/auto-pairs' " auto complete parens and such
+Plug 'kana/vim-textobj-user' " allow other textob
+Plug 'kana/vim-textobj-function'  " use functions as text objects
+Plug 'mhinz/vim-startify' " a smarter start screen
+Plug 'tpope/vim-repeat' " plugins also repeatable with . operator
+Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
+augroup qs_colors
+  autocmd!
+  autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+  autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+augroup END
+" Trigger a highlight in the appropriate direction when pressing these keys:
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Initialize plugin system
+call plug#end()
+
 
 
 
 "****BASIC CONFIG****
-
-" Config for papercolor theme
-set background=dark   
-set t_Co=256
-colorscheme PaperColor
 
 " Turn on syntax highlighting
 syntax on
@@ -41,6 +53,9 @@ set number
 
 " Show status bar
 set laststatus=2
+
+set background=dark   
+set t_Co=256
 
 
 
