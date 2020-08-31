@@ -12,6 +12,10 @@ call plug#begin('~/.vim/plugged')
 
 " plugins
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
+Plug 'mattn/emmet-vim' "html config
+"--Emmet Config
+"redefine trigger key
+let g:user_emmet_leader_key=','
 
 " ethan's default plugins and configs
 Plug 'mbbill/undotree' " keep undo through saves
@@ -43,6 +47,16 @@ call plug#end()
 
 " Turn on syntax highlighting
 syntax on
+
+" Shows matching brackets
+set showmatch
+
+" Autotabs for certain code
+set smarttab
+
+" Set tabstop and shiftwidth
+set tabstop=4
+set shiftwidth=4
 
 " Always show current position
 set ruler 
