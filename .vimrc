@@ -33,9 +33,9 @@ augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Initialize plugin system
 call plug#end()
@@ -67,6 +67,7 @@ set number
 " Show status bar
 set laststatus=2
 
+" Colors
 set background=dark   
 set t_Co=256
 
