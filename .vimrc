@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 
 " plugins
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
+Plug 'pangloss/vim-javascript' "javascript indentation and syntax support
 Plug 'mattn/emmet-vim' "html config
 "--Emmet Config
 "redefine trigger key
