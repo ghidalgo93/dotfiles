@@ -17,6 +17,7 @@ Plug 'mattn/emmet-vim' "html config
 "--Emmet Config
 "redefine trigger key
 let g:user_emmet_leader_key=','
+Plug 'tpope/vim-commentary' "vim commenting plugin
 
 " ethan's default plugins and configs
 Plug 'mbbill/undotree' " keep undo through saves
