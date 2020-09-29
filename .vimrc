@@ -11,6 +11,7 @@ filetype off " required
 call plug#begin('~/.vim/plugged')
 
 " plugins
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "COC autocomplete
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 Plug 'pangloss/vim-javascript' "javascript indentation and syntax support
 Plug 'mattn/emmet-vim' "html config
