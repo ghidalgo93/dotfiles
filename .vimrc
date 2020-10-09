@@ -74,6 +74,14 @@ set laststatus=2
 set background=dark   
 set t_Co=256
 
+" Search Highlighting
+set hlsearch
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Highlighting while typing
+set incsearch
 
 
 "****REMAPS****
