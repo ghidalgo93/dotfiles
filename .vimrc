@@ -20,6 +20,8 @@ Plug 'mattn/emmet-vim' "html config
 let g:user_emmet_leader_key=','
 Plug 'tpope/vim-commentary' "vim commenting plugin
 
+
+
 " ethan's default plugins and configs
 Plug 'mbbill/undotree' " keep undo through saves
 Plug 'jiangmiao/auto-pairs' " auto complete parens and such
@@ -27,6 +29,9 @@ Plug 'kana/vim-textobj-user' " allow other textob
 Plug 'kana/vim-textobj-function'  " use functions as text objects
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'tpope/vim-repeat' " plugins also repeatable with . operator
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+Plug 'junegunn/fzf.vim'
+nmap <C-P> :Files<CR> 
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
 augroup qs_colors
   autocmd!
@@ -42,8 +47,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Initialize plugin system
 call plug#end()
-
-
 
 
 "****BASIC CONFIG****
@@ -83,6 +86,27 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlighting while typing
 set incsearch
 
+
+
+
+
+
+"****COC Autocomplete Config***
+
+"TextEdit might fail if hidden is not set.
+set hidden
+
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<Tab>" :
+	\ coc#refresh()
 
 "****REMAPS****
 
