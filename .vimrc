@@ -87,6 +87,9 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlighting while typing
 set incsearch
 
+" turn hybrid line numbers on 
+:set number relativenumber
+:set nu rnu
 
 
 " use <tab> for trigger completion and navigate to the next complete item
