@@ -22,6 +22,7 @@ Plug 'tpope/vim-commentary' "vim commenting plugin
 
 
 
+
 " ethan's default plugins and configs
 Plug 'mbbill/undotree' " keep undo through saves
 Plug 'jiangmiao/auto-pairs' " auto complete parens and such
@@ -86,15 +87,6 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlighting while typing
 set incsearch
 
-
-
-
-
-
-"****COC Autocomplete Config***
-
-"TextEdit might fail if hidden is not set.
-set hidden
 
 
 " use <tab> for trigger completion and navigate to the next complete item
