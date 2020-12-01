@@ -4,16 +4,20 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below 
 filetype off " required
 
-
 "****PLUGINS****
 
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
 
 " plugins
+Plug 'dense-analysis/ale' "ALE, Asynchronous Lint Engine
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\} "global js aleFix config
+let g:ale_fix_on_save = 1 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "COC autocomplete
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
-Plug 'pangloss/vim-javascript' "javascript indentation and syntax support
+" Plug 'pangloss/vim-javascript' "javascript indentation and syntax support
 Plug 'mattn/emmet-vim' "html config
 "--Emmet Config
 "redefine trigger key
