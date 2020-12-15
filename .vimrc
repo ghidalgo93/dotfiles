@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 
 " plugins
 Plug 'dense-analysis/ale' "ALE, Asynchronous Lint Engine
+"--ALE config
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'css': ['prettier'],
@@ -26,7 +27,6 @@ Plug 'mattn/emmet-vim' "html config
 "redefine trigger key
 let g:user_emmet_leader_key=','
 Plug 'tpope/vim-commentary' "vim commenting plugin
-
 
 
 
@@ -69,8 +69,8 @@ set showmatch
 set smarttab
 
 " Set tabstop and shiftwidth
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " Always show current position
 set ruler 
