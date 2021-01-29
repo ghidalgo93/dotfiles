@@ -1,11 +1,10 @@
-" Don't try to be vi compatible, be iMproved, required
-set nocompatible
+" Don't try to be vi compatible, be iMproved, required set nocompatible
 
 " Helps force plugins to load correctly when it is turned back on below 
 filetype off " required
 
-"****PLUGINS****
 
+"****PLUGINS****
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
 
@@ -23,11 +22,10 @@ highlight ALEWarning ctermbg=DarkMagenta
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "COC autocomplete
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 Plug 'mattn/emmet-vim' "html config
-"--Emmet Config
-"redefine trigger key
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key=',' "redefine trigger key
 Plug 'tpope/vim-commentary' "vim commenting plugin
-
+Plug 'sheerun/vim-polyglot' "collection of language packs for vim
+Plug 'franbach/miramare' "color scheme
 
 
 " ethan's default plugins and configs
@@ -36,7 +34,7 @@ Plug 'jiangmiao/auto-pairs' " auto complete parens and such
 Plug 'kana/vim-textobj-user' " allow other textob
 Plug 'kana/vim-textobj-function'  " use functions as text objects
 Plug 'mhinz/vim-startify' " a smarter start screen
-Plug 'tpope/vim-repeat' " plugins also repeatable with . operator
+" Plug 'tpope/vim-repeat' " plugins also repeatable with . operator
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
 nmap <C-P> :Files<CR> 
@@ -49,9 +47,9 @@ augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Initialize plugin system
 call plug#end()
@@ -82,8 +80,8 @@ set number
 set laststatus=2
 
 " Colors
-set background=dark   
-set t_Co=256
+" set background=dark   
+" set t_Co=256
 
 " Search Highlighting
 set hlsearch
@@ -109,6 +107,24 @@ inoremap <silent><expr> <Tab>
 	\ pumvisible() ? "\<C-n>" :
 	\ <SID>check_back_space() ? "\<Tab>" :
 	\ coc#refresh()
+
+" Enable true color 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+" important!!
+set termguicolors
+
+" the configuration options should be placed before `colorscheme miramare`
+let g:miramare_enable_italic = 1
+let g:miramare_disable_italic_comment = 1
+let g:miramare_current_word = 'underline'
+let g:airline_theme = 'miramare'
+
+colorscheme miramare
 
 "****REMAPS****
 
