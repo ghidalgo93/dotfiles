@@ -17,15 +17,14 @@ let g:ale_fixers = {
 \ 	'html': ['prettier'],
 \} "global js aleFix config
 let g:ale_fix_on_save = 1 
-highlight ALEError ctermbg=DarkMagenta
-highlight ALEWarning ctermbg=DarkMagenta
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "COC autocomplete
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 Plug 'mattn/emmet-vim' "html config
 let g:user_emmet_leader_key=',' "redefine trigger key
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sheerun/vim-polyglot' "collection of language packs for vim
-Plug 'franbach/miramare' "color scheme
+" Plug 'franbach/miramare' "color scheme
+Plug 'sainnhe/forest-night'
 
 
 " ethan's default plugins and configs
@@ -79,10 +78,6 @@ set number
 " Show status bar
 set laststatus=2
 
-" Colors
-" set background=dark   
-" set t_Co=256
-
 " Search Highlighting
 set hlsearch
 
@@ -108,23 +103,28 @@ inoremap <silent><expr> <Tab>
 	\ <SID>check_back_space() ? "\<Tab>" :
 	\ coc#refresh()
 
-" Enable true color 
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set encoding=UTF-8
+
+" " " important!!
+" set termguicolors
+" " " the configuration options should be placed before `colorscheme miramare`
+" let g:miramare_enable_italic = 1
+" let g:miramare_disable_italic_comment = 1
+" let g:airline_theme = 'miramare'
+" colorscheme miramare
+
+" Important!!
+if has('termguicolors')
   set termguicolors
 endif
+" The configuration options should be placed before `colorscheme forest-night`.
+let g:forest_night_enable_italic = 1
+let g:forest_night_disable_italic_comment = 1
+let g:forest_night_diagnostic_text_highlight = 1
+let g:forest_night_diagnostic_line_highlight = 1
+let g:forest_night_better_performance = 1
+colorscheme forest-night
 
-" important!!
-set termguicolors
-
-" the configuration options should be placed before `colorscheme miramare`
-let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-let g:miramare_current_word = 'underline'
-let g:airline_theme = 'miramare'
-
-colorscheme miramare
 
 "****REMAPS****
 
@@ -135,6 +135,20 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+let mapleader=","
+
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 
 set splitbelow
 set splitright
