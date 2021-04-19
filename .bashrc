@@ -95,7 +95,7 @@ alias c='clear'
 alias q='exit'
 alias g='git'
 alias t='tmux'
-alias v="nvim"
+alias n="nvim"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

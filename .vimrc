@@ -3,18 +3,6 @@
 " Helps force plugins to load correctly when it is turned back on below 
 filetype off " required
 
-" ****Vim-Plug Automation****
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 "****PLUGINS****
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
@@ -35,7 +23,7 @@ let g:user_emmet_leader_key=',' "redefine trigger key
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sheerun/vim-polyglot' "collection of language packs for vim
 " Plug 'franbach/miramare' "color scheme
-Plug 'sainnhe/forest-night'
+Plug 'sainnhe/everforest'
 
 
 " ethan's default plugins and configs
@@ -116,25 +104,17 @@ inoremap <silent><expr> <Tab>
 
 set encoding=UTF-8
 
-" " " important!!
-" set termguicolors
-" " " the configuration options should be placed before `colorscheme miramare`
-" let g:miramare_enable_italic = 1
-" let g:miramare_disable_italic_comment = 1
-" let g:airline_theme = 'miramare'
-" colorscheme miramare
-
 " Important!!
 if has('termguicolors')
   set termguicolors
 endif
 " The configuration options should be placed before `colorscheme forest-night`.
-let g:forest_night_enable_italic = 1
-let g:forest_night_disable_italic_comment = 1
-" let g:forest_night_diagnostic_text_highlight = 1
-" let g:forest_night_diagnostic_line_highlight = 1
-let g:forest_night_better_performance = 1
-colorscheme forest-night
+" let g:forest_night_enable_italic = 1
+" let g:forest_night_disable_italic_comment = 1
+" " let g:forest_night_diagnostic_text_highlight = 1
+" " let g:forest_night_diagnostic_line_highlight = 1
+" let g:forest_night_better_performance = 1
+colorscheme everforest 
 
 
 "****REMAPS****
