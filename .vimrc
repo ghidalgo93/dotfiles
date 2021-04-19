@@ -106,11 +106,9 @@ if has('termguicolors')
   set termguicolors
 endif
 " The configuration options should be placed before `colorscheme forest-night`.
-" let g:forest_night_enable_italic = 1
-" let g:forest_night_disable_italic_comment = 1
-" " let g:forest_night_diagnostic_text_highlight = 1
-" " let g:forest_night_diagnostic_line_highlight = 1
-" let g:forest_night_better_performance = 1
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
+let g:everforest_better_performance = 1
 colorscheme everforest 
 
 
@@ -123,8 +121,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-let mapleader=","
 
 set splitbelow
 set splitright
