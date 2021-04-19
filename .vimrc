@@ -1,15 +1,21 @@
-" Don't try to be vi compatible, be iMproved, required set nocompatible
-
-" Helps force plugins to load correctly when it is turned back on below 
-filetype off " required
-
 "****PLUGINS****
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
 
 " plugins
 Plug 'dense-analysis/ale' "ALE, Asynchronous Lint Engine
-"--ALE config
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'css': ['prettier'],
@@ -22,7 +28,6 @@ Plug 'mattn/emmet-vim' "html config
 let g:user_emmet_leader_key=',' "redefine trigger key
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sheerun/vim-polyglot' "collection of language packs for vim
-" Plug 'franbach/miramare' "color scheme
 Plug 'sainnhe/everforest'
 
 
@@ -32,7 +37,6 @@ Plug 'jiangmiao/auto-pairs' " auto complete parens and such
 Plug 'kana/vim-textobj-user' " allow other textob
 Plug 'kana/vim-textobj-function'  " use functions as text objects
 Plug 'mhinz/vim-startify' " a smarter start screen
-" Plug 'tpope/vim-repeat' " plugins also repeatable with . operator
 Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
 Plug 'junegunn/fzf.vim'
 nmap <C-P> :Files<CR> 
@@ -45,18 +49,12 @@ augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Initialize plugin system
 call plug#end()
 
 
 "****BASIC CONFIG****
-
-" Turn on syntax highlighting
-syntax on
 
 " Shows matching brackets
 set showmatch
@@ -89,7 +87,6 @@ set incsearch
 " turn hybrid line numbers on 
 :set number relativenumber
 :set nu rnu
-
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -128,18 +125,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 let mapleader=","
-
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
-
 
 set splitbelow
 set splitright
