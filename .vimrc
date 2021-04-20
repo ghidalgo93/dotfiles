@@ -23,20 +23,22 @@ let g:ale_fixers = {
 \} "global js aleFix config
 let g:ale_fix_on_save = 1 
 Plug 'neovim/nvim-lspconfig' "native nvim lsp
+Plug 'nvim-lua/completion-nvim' "native nvim autocomplete
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sheerun/vim-polyglot' "collection of language packs for vim
+Plug 'jiangmiao/auto-pairs' 
 Plug 'sainnhe/everforest'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " ethan's default plugins and configs
-Plug 'mbbill/undotree' " keep undo through saves
-Plug 'jiangmiao/auto-pairs' " auto complete parens and such
-Plug 'kana/vim-textobj-user' " allow other textob
-Plug 'kana/vim-textobj-function'  " use functions as text objects
 Plug 'mhinz/vim-startify' " a smarter start screen
-Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
-Plug 'junegunn/fzf.vim'
-nmap <C-P> :Files<CR> 
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
 augroup qs_colors
   autocmd!
@@ -95,12 +97,12 @@ endif
 let g:everforest_disable_italic_comment = 1
 let g:everforest_better_performance = 1
 let g:everforest_diagnostic_virtual_text = 'colored'
-
 colorscheme everforest 
 
-lua require('lspconfig').tsserver.setup{}
+lua require('lspconfig').tsserver.setup{on_attach=require'completion'.on_attach}
 
 "****REMAPS****
+let mapleader = "," "map leader to comma
 
 " King of all remaps
 ino jk <esc>
@@ -110,6 +112,18 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+}
+EOF
+
 set splitbelow
 set splitright
-
