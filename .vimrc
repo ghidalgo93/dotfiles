@@ -22,14 +22,11 @@ let g:ale_fixers = {
 \ 	'html': ['prettier'],
 \} "global js aleFix config
 let g:ale_fix_on_save = 1 
-Plug 'neoclide/coc.nvim', {'branch': 'release'} "COC autocomplete
+Plug 'neovim/nvim-lspconfig' "native nvim lsp
 Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
-Plug 'mattn/emmet-vim' "html config
-let g:user_emmet_leader_key=',' "redefine trigger key
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sheerun/vim-polyglot' "collection of language packs for vim
 Plug 'sainnhe/everforest'
-
 
 " ethan's default plugins and configs
 Plug 'mbbill/undotree' " keep undo through saves
@@ -88,17 +85,6 @@ set incsearch
 :set number relativenumber
 :set nu rnu
 
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<Tab>" :
-	\ coc#refresh()
-
 set encoding=UTF-8
 
 " Important!!
@@ -106,11 +92,13 @@ if has('termguicolors')
   set termguicolors
 endif
 " The configuration options should be placed before `colorscheme forest-night`.
-let g:everforest_enable_italic = 1
 let g:everforest_disable_italic_comment = 1
 let g:everforest_better_performance = 1
+let g:everforest_diagnostic_virtual_text = 'colored'
+
 colorscheme everforest 
 
+lua require('lspconfig').tsserver.setup{}
 
 "****REMAPS****
 
@@ -124,3 +112,4 @@ nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
+
