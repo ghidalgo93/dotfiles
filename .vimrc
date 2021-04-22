@@ -117,6 +117,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fd <cmd>Telescope git_files<cr>
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -127,3 +128,20 @@ EOF
 
 set splitbelow
 set splitright
+
+func! WordProcessor()
+  " movement changes
+  map j gj
+  map k gk
+  " formatting text
+  setlocal formatoptions=1
+  setlocal noexpandtab
+  setlocal wrap
+  setlocal linebreak
+  " spelling and thesaurus
+  setlocal spell spelllang=en_us
+  set thesaurus+=/home/gerardo/dotfiles/vim/thesaurus/mthesaur.txt
+  " complete+=s makes autocompletion search the thesaurus
+  set complete+=s
+endfu
+com! WP call WordProcessor()
