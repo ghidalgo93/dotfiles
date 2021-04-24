@@ -1,45 +1,64 @@
 "****PLUGINS****
-
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
 
-" plugins
-Plug 'dense-analysis/ale' "ALE, Asynchronous Lint Engine
-let g:ale_fixers = {
-\   'javascript': ['prettier', 'eslint'],
-\   'css': ['prettier'],
-\ 	'html': ['prettier'],
-\} "global js aleFix config
-let g:ale_fix_on_save = 1 
 Plug 'neovim/nvim-lspconfig' "native nvim lsp
-Plug 'nvim-lua/completion-nvim' "native nvim autocomplete
-set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-Plug 'christoomey/vim-tmux-navigator' "tmux-vim pane navigator
+Plug 'hrsh7th/nvim-compe' "nvim autocomplete
+Plug 'windwp/nvim-autopairs' "nvim autopairing
 Plug 'tpope/vim-commentary' "vim commenting plugin
-Plug 'sheerun/vim-polyglot' "collection of language packs for vim
-Plug 'jiangmiao/auto-pairs' 
-Plug 'sainnhe/everforest'
+Plug 'sainnhe/everforest' "colorscheme plugin
+Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
+Plug 'mhinz/vim-startify' " a smarter start screen
+Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" ethan's default plugins and configs
-Plug 'mhinz/vim-startify' " a smarter start screen
-Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
+" Initialize plugin system
+call plug#end()
+
+
+"****BASIC CONFIG****
+set encoding=UTF-8
+set showmatch " Shows matching brackets
+set smarttab " Autotabs for certain code
+set tabstop=2 " Set tabstop 
+set shiftwidth=2 " Set shiftwidth 
+set ruler " Always show current position
+set number " Show line numbers
+set laststatus=2 " Show status bar
+set hlsearch " Search Highlighting
+
+" Press Space to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+set incsearch " Highlighting while typing
+
+" turn hybrid line numbers on 
+:set number relativenumber
+:set nu rnu
+
+set splitbelow
+set splitright
+
+
+"****REMAPS****
+let mapleader = " " "map leader to space 
+
+" King of all remaps
+ino jk <esc>
+
+" movement between vim panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+"*****SETTINGS*****
+
+" quick-scope settings  
 augroup qs_colors
   autocmd!
   autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
@@ -47,50 +66,9 @@ augroup qs_colors
 augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 
-" Initialize plugin system
-call plug#end()
-
-
-"****BASIC CONFIG****
-
-" Shows matching brackets
-set showmatch
-
-" Autotabs for certain code
-set smarttab
-
-" Set tabstop and shiftwidth
-set tabstop=2
-set shiftwidth=2
-
-" Always show current position
-set ruler 
-
-" Show line numbers
-set number
-
-" Show status bar
-set laststatus=2
-
-" Search Highlighting
-set hlsearch
-
-" Press Space to turn off highlighting and clear any message already displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
-" Highlighting while typing
-set incsearch
-
-" turn hybrid line numbers on 
-:set number relativenumber
-:set nu rnu
-
-set encoding=UTF-8
-
-" Important!!
-if has('termguicolors')
+" Color settings
+if has('termguicolors') " Important!!
   set termguicolors
 endif
 " The configuration options should be placed before `colorscheme forest-night`.
@@ -99,49 +77,79 @@ let g:everforest_better_performance = 1
 let g:everforest_diagnostic_virtual_text = 'colored'
 colorscheme everforest 
 
-lua require('lspconfig').tsserver.setup{on_attach=require'completion'.on_attach}
-
-"****REMAPS****
-let mapleader = "," "map leader to comma
-
-" King of all remaps
-ino jk <esc>
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fd <cmd>Telescope git_files<cr>
+" Neovim plugin configs
 lua <<EOF
+require'lspconfig'.tsserver.setup{
+	on_attach = on_attach_common
+}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
   },
 }
+require'nvim-autopairs'.setup{}
+require'compe'.setup({
+		enabled = true,
+    source = {
+      path = true,
+      buffer = true,
+      nvim_lsp = true,
+    },
+  })
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
 EOF
 
-set splitbelow
-set splitright
-
-func! WordProcessor()
-  " movement changes
-  map j gj
-  map k gk
-  " formatting text
-  setlocal formatoptions=1
-  setlocal noexpandtab
-  setlocal wrap
-  setlocal linebreak
-  " spelling and thesaurus
-  setlocal spell spelllang=en_us
-  set thesaurus+=/home/gerardo/dotfiles/vim/thesaurus/mthesaur.txt
-  " complete+=s makes autocompletion search the thesaurus
-  set complete+=s
-endfu
-com! WP call WordProcessor()
+" Find files using Telescope command-line sugar.
+nmap <C-P> :Telescope find_files theme=get_dropdown<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fd <cmd>Telescope git_files<cr>

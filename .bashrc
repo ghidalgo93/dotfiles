@@ -130,3 +130,6 @@ export NVM_DIR="$HOME/.nvm"
 
 
 PATH="$HOME/.local/bin:$PATH"
+
+# Configure FZF to use ripgrep
+export FZF_DEFAULT_COMMAND='rg --files'
