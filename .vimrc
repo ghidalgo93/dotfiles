@@ -70,14 +70,14 @@ augroup END
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Color settings
-" if has('termguicolors') " Important!!
-"   set termguicolors
-" endif
-" " The configuration options should be placed before `colorscheme forest-night`.
-" let g:everforest_disable_italic_comment = 1
-" let g:everforest_better_performance = 1
-" let g:everforest_diagnostic_virtual_text = 'colored'
-" colorscheme everforest 
+if has('termguicolors') " Important!!
+  set termguicolors
+endif
+" The configuration options should be placed before `colorscheme forest-night`.
+let g:everforest_disable_italic_comment = 1
+let g:everforest_better_performance = 1
+let g:everforest_diagnostic_virtual_text = 'colored'
+colorscheme everforest 
 
 " Neovim plugin configs
 lua <<EOF

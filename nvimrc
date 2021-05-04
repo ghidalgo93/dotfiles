@@ -8,7 +8,7 @@ Plug 'neovim/nvim-lspconfig' "native nvim lsp
 Plug 'hrsh7th/nvim-compe' "nvim autocomplete
 Plug 'windwp/nvim-autopairs' "nvim autopairing
 Plug 'tpope/vim-commentary' "vim commenting plugin
-" Plug 'sainnhe/everforest' "colorscheme plugin
+Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
@@ -69,15 +69,15 @@ augroup END
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-" " Color settings
-" if has('termguicolors') " Important!!
-"   set termguicolors
-" endif
-" " The configuration options should be placed before `colorscheme forest-night`.
-" let g:everforest_disable_italic_comment = 1
-" let g:everforest_better_performance = 1
-" let g:everforest_diagnostic_virtual_text = 'colored'
-" colorscheme everforest 
+" Color settings
+if has('termguicolors') " Important!!
+	set termguicolors
+endif
+" The configuration options should be placed before `colorscheme forest-night`.
+let g:everforest_disable_italic_comment = 1
+let g:everforest_better_performance = 1
+let g:everforest_diagnostic_virtual_text = 'colored'
+colorscheme everforest 
 
 " Neovim plugin configs
 lua <<EOF
