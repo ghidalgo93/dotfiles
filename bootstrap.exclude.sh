@@ -8,10 +8,14 @@ link () {
 	done
 }
 
+bootstrap_vim() {
+  "$( pwd )/vim.bootstrap.exclude.sh"
+}
+
 # SCRIPT
 
 # init func (something that describes startup)
 # sync func (here we use symbolic links)
 link
 # install tools/dependencies depending on os (macos vs linux)
-# install vimplug
+bootstrap_vim
