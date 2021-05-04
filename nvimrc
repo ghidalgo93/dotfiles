@@ -1,7 +1,7 @@
 "****PLUGINS****
 
 " begin vim-plug manager
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 
 Plug 'neovim/nvim-lspconfig' "native nvim lsp
