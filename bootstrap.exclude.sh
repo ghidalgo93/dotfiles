@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. "$( pwd )/utils.exclude.sh"
+
 link () {
 	# symlink nvimrc to the nvim config directory
 	ln -sv ~/dotfiles/nvimrc ~/.config/nvim/init.vim

@@ -117,6 +117,7 @@ EOF
 " Find files using Telescope command-line sugar.
 nmap <C-P> :Telescope find_files theme=get_dropdown<CR>
 nmap <C-F> :Telescope buffers theme=get_dropdown<CR>
+nnoremap <leader>ff <cmd>Telescope find_files theme=get_dropdown find_command=--hidden<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fd <cmd>Telescope git_files<cr>
