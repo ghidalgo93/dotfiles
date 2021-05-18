@@ -8,7 +8,7 @@ Plug 'neovim/nvim-lspconfig' "native nvim lsp
 Plug 'hrsh7th/nvim-compe' "nvim autocomplete
 Plug 'windwp/nvim-autopairs' "nvim autopairing
 Plug 'tpope/vim-commentary' "vim commenting plugin
-" Plug 'sainnhe/everforest' "colorscheme plugin
+Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate

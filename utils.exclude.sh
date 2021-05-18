@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Utility functions that the other dotfile related scripts will use, written by https://github.com/ajmalsiddiqui/dotfiles/
 
@@ -34,21 +34,29 @@
 # }
 
 function get_os() {
-  local os=''
-	if [ $( echo "$OSTYPE" | grep 'darwin' ) ] ; then
-    os='darwin'
-  elif [ $( echo "$OSTYPE" | grep 'linux-gnu' ) ] ; then
-    # This file contains all the details you need!
-    source /etc/os-release
-    # Set os to ID_LIKE if this field exists
-    # Else default to ID
-    # ref. https://www.freedesktop.org/software/systemd/man/os-release.html#:~:text=The%20%2Fetc%2Fos%2Drelease,like%20shell%2Dcompatible%20variable%20assignments.
-    os="${ID_LIKE:-$ID}"
-  else
-    os='unknown'
-  fi
-  # Also set an env var based on this
-  export DETECTED_OS="$os"
-  # This is how you "return" a value when using function apparently :3
-  echo "$os"
-}	
+	# determine operating system, alternative: use $OSTYPE
+	local platform='unknown'
+	OS=`uname`
+	case $OS in
+			'Linux')
+					platform='Linux'
+					;;
+			'FreeBSD')
+					platform='FreeBSD'
+					;;
+			'WindowsNT')
+					platform='Windows'
+					;;
+			'Darwin') 
+					platform='Mac'
+					;;
+			'SunOS')
+					platform='Solaris'
+					;;
+			*)
+					platform='unknown'
+					;;
+	esac
+	# return platform
+	echo "$platform"
+}
