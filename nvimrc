@@ -23,6 +23,7 @@ call plug#end()
 
 
 "****BASIC CONFIG****
+set nowrap
 set encoding=UTF-8
 set showmatch " Shows matching brackets
 set smarttab " Autotabs for certain code
