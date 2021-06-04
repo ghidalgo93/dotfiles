@@ -3,20 +3,11 @@
 " begin vim-plug manager
 call plug#begin('~/.vim/plugged')
 
-
-Plug 'neovim/nvim-lspconfig' "native nvim lsp
-Plug 'hrsh7th/nvim-compe' "nvim autocomplete
-Plug 'windwp/nvim-autopairs' "nvim autopairing
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -78,45 +69,3 @@ let g:everforest_disable_italic_comment = 1
 let g:everforest_better_performance = 1
 let g:everforest_diagnostic_virtual_text = 'colored'
 colorscheme everforest 
-
-" Neovim plugin configs
-lua <<EOF
-require'lspconfig'.tsserver.setup{
-	on_attach = on_attach_common
-}
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true
-  },
-}
-require'nvim-autopairs'.setup{}
-require'compe'.setup({
-		enabled = true,
-    source = {
-      path = true,
-      buffer = true,
-      nvim_lsp = true,
-    },
-  })
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case', 
-			'--hidden'
-    }
-  }
-}
-EOF
-
-" Find files using Telescope command-line sugar.
-nmap <C-P> :Telescope find_files theme=get_dropdown<CR>
-nmap <C-F> :Telescope find_files find_command=rg,--hidden,--files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fd <cmd>Telescope git_files<cr>
