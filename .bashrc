@@ -6,6 +6,9 @@ source "$HOME/.aliases"
 # source "$HOME/.exports"
 # source "$HOME/.functions"
 
+export VISUAL=/usr/bin/vim.tiny
+export EDITOR="$VISUAL"
+
 # ---------------------------------------------
 # Default Ubuntu .bashrc 
 # ---------------------------------------------
