@@ -1,4 +1,5 @@
 export PATH="$HOME/.local/bin:$PATH"
+export PATH=~/bin:$PATH # add ~/bin to path
 
 # Source this first since it contains the locations of directories needed by funcitons
 source "$HOME/.bash_prompt"
