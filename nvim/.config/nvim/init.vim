@@ -1,8 +1,6 @@
 "****PLUGINS****
-
 " begin vim-plug manager
 call plug#begin('~/.config/nvim/plugged')
-
 
 Plug 'neovim/nvim-lspconfig' "native nvim lsp
 Plug 'hrsh7th/nvim-compe' "nvim autocomplete
@@ -13,6 +11,10 @@ Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'lewis6991/spellsitter.nvim' " spellchecker
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
+Plug 'kyazdani42/nvim-web-devicons' " file tree with file icons
+Plug 'kyazdani42/nvim-tree.lua' " actual file tree
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -90,7 +92,10 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   },
 }
-require'nvim-autopairs'.setup{}
+require('spellsitter').setup {
+  hl = 'SpellBad',
+  captures = {},  -- set to {} to spellcheck everything
+}
 require'compe'.setup({
 		enabled = true,
     source = {
@@ -99,6 +104,7 @@ require'compe'.setup({
       nvim_lsp = true,
     },
   })
+require('spellsitter').setup()
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
@@ -114,6 +120,10 @@ require('telescope').setup{
   }
 }
 EOF
+
+" nvim tree
+nnoremap <leader>tt :NvimTreeToggle<CR>
+
 
 " Find files using Telescope command-line sugar.
 nmap <C-P> :Telescope find_files theme=get_dropdown<CR>
