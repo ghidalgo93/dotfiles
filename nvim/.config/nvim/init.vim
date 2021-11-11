@@ -1,4 +1,4 @@
-"****PLUGINS****
+" ****PLUGINS****
 " begin vim-plug manager
 call plug#begin('~/.config/nvim/plugged')
 
@@ -87,6 +87,8 @@ lua <<EOF
 require'lspconfig'.tsserver.setup{
 	on_attach = on_attach_common
 }
+require'lspconfig'.racket_langserver.setup{}
+require('nvim-autopairs').setup{}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
@@ -104,7 +106,6 @@ require'compe'.setup({
       nvim_lsp = true,
     },
   })
-require('spellsitter').setup()
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {

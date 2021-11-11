@@ -73,3 +73,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# # >>> conda initialize >>>
+# # !! contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/gerardo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/gerardo/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/gerardo/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export path="/home/gerardo/miniconda3/bin:$path"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+
