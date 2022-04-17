@@ -2,15 +2,20 @@
 # Common aliases
 # ---------------------------------
 
-alias ni='~/Apps/nvim.appimage'
-
 # ---------------------------------
 # Aliases for curc 
 # ---------------------------------
-alias curc="ssh gehi0941@login.rc.colorado.edu"
+# alias curc="ssh gehi0941@login.rc.colorado.edu"
+
+# ---------------------------------
+# Aliases for CU VPN 
+# ---------------------------------
+alias vpnup="/opt/cisco/anyconnect/bin/vpn connect vpn.colorado.edu"
+alias vpndn="/opt/cisco/anyconnect/bin/vpn disconnect"
+alias vpnst="/opt/cisco/anyconnect/bin/vpn status"
 
 # ---------------------------------
 # Aliases for tmux
 # ---------------------------------
 
-alias t='tmux'
+alias tmux='tmux -2'
