@@ -8,6 +8,8 @@ Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'chun-yang/auto-pairs'
 
 " Initialize plugin system
 call plug#end()
