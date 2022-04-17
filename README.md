@@ -29,7 +29,7 @@ I reccomend doing this testing before every stow, it will tell you exactly what 
 
 I reccomend making backups of any files it would overwrite/adopt, for example:
 
-`mv ~/.bashrc ~/.bashrc_backup`
+`mv ~/.bashrc ~/.bashrc.bak`
 
 Just in case things go wrong.
 
