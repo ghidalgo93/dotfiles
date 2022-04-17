@@ -18,6 +18,7 @@ Plug 'lewis6991/spellsitter.nvim' " spellchecker
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 Plug 'kyazdani42/nvim-web-devicons' " file tree with file icons
 Plug 'kyazdani42/nvim-tree.lua' " actual file tree
+Plug 'tpope/vim-fugitive'
 
 " neovim lsp plugins
 Plug 'neovim/nvim-lspconfig' "native nvim lsp
