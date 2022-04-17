@@ -109,7 +109,7 @@ set shiftwidth=2 " Set shiftwidth
 " }}}
 
 " UI {{{
-let mapleader = "," 	" Map leader to space 
+let mapleader = " " 	" Map leader to space 
 ino jk <esc> 					" King of all remaps
 tnoremap jk <C-\><C-n> " terminal remap escape
 set cursorline 				" Hightlight cursorline
@@ -120,7 +120,7 @@ set laststatus=2 			" Show status bar
 set ruler 						" Always show current position
 set hlsearch 					" Search Highlighting
 set incsearch 				" Highlighting while typing
-nnoremap <silent> <CR> :nohlsearch<Bar>:echo<CR> 			" Return to turn off highlighting
+nnoremap <silent> <space> :nohlsearch<Bar>:echo<CR> 			" Return to turn off highlighting
 
 " movement between vim panes
 nnoremap <C-J> <C-W><C-J>
@@ -134,6 +134,9 @@ set splitright
 
 " Encoding? 
 set encoding=UTF-8
+
+" Open vim terminal
+nnoremap <leader>tm :vsp <bar> :term<CR> 
 " }}}
 
 " Section Folding {{{
@@ -141,7 +144,7 @@ set foldenable
 set foldlevelstart=10 
 set foldnestmax=10
 set foldmethod=syntax
-nnoremap <space> za "Open and close folds
+nnoremap <CR> za "Open and close folds
 " }}}
 
 " Telescope {{{
