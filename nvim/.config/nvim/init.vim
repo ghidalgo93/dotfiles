@@ -14,7 +14,6 @@ Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
-Plug 'lewis6991/spellsitter.nvim' " spellchecker
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 Plug 'kyazdani42/nvim-web-devicons' " file tree with file icons
 Plug 'kyazdani42/nvim-tree.lua' " actual file tree
@@ -45,10 +44,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true
   },
-}
-require('spellsitter').setup {
-  hl = 'SpellBad',
-  captures = {},  -- set to {} to spellcheck everything
 }
 require'compe'.setup({
 		enabled = true,
@@ -151,7 +146,6 @@ nnoremap <CR> za "Open and close folds
 " Find files using Telescope command-line sugar.
 nmap <C-P> :Telescope find_files theme=get_dropdown<CR>
 nmap <C-F> :Telescope buffers theme=get_dropdown<CR>
-nnoremap <leader>ff <cmd>Telescope find_files theme=get_dropdown find_command=rg,--hidden,--files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fd <cmd>Telescope git_files<cr>
