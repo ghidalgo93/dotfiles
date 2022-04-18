@@ -3,8 +3,6 @@
 " Maintainer: Gerardo Hidalgo-Cuellar 
 
 " Plugins {{{
-
-
 call plug#begin('~/.config/nvim/plugged') " begin vim-plug manager
 
 Plug 'hrsh7th/nvim-compe' "nvim autocomplete
