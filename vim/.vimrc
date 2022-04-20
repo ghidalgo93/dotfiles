@@ -4,12 +4,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-commentary' "vim commenting plugin
-Plug 'sainnhe/everforest' "colorscheme plugin
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'chun-yang/auto-pairs'
+Plug 'flazz/vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()
@@ -63,11 +61,8 @@ augroup END
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Color settings
-if has('termguicolors') " Important!!
-  set termguicolors
-endif
-" The configuration options should be placed before `colorscheme forest-night`.
-let g:everforest_disable_italic_comment = 1
-let g:everforest_better_performance = 1
-let g:everforest_diagnostic_virtual_text = 'colored'
-colorscheme everforest 
+" if has('termguicolors') " Important!!
+"   set termguicolors
+" endif
+colorscheme gruvbox
+set background=dark

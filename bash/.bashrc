@@ -1,6 +1,18 @@
-export PATH="$HOME/.local/bin:$PATH"
-export PATH=~/bin:$PATH # add ~/bin to path
-export PATH=~/Applications/neovim/bin:$PATH # add path to neovim
+# CURC specific dirs
+export PROJ="/projects/$USER"
+export SW="/projects/$USER/software"
+
+# Bin paths
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$PROJ/local/bin"
+
+# Lib paths
+export LD_LIBRARY_PATH="$PROJ/local/lib:$LD_LIBRARY_PATH"
+
+# Local sw paths
+export PATH="$SW/neovim/install/bin:$PATH"
+export PATH="$SW/tmux/install/bin:$PATH"
 
 # Source this first since it contains the locations of directories needed by funcitons
 source "$HOME/.bash_prompt"
@@ -8,7 +20,7 @@ source "$HOME/.aliases"
 # source "$HOME/.exports"
 # source "$HOME/.functions"
 
-export VISUAL=nvim
+export VISUAL=/usr/bin/vim.tiny
 export EDITOR="$VISUAL"
 
 # ---------------------------------------------
@@ -75,25 +87,22 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# >>> conda initialize >>>
-# !! contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/gerardo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/gerardo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/gerardo/miniconda3/etc/profile.d/conda.sh"
-    else
-        export path="/home/gerardo/miniconda3/bin:$path"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# # >>> conda initialize >>>
+# # !! contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/gerardo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/gerardo/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/gerardo/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export path="/home/gerardo/miniconda3/bin:$path"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
 
+# export SINGULARITY_CACHEDIR=/scratch/summit/$USER/containers
+# export SINGULARITY_TMPDIR=/scratch/summit/$USER/containers
+# export MODULEPATH=/projects/$USER/software/singularity-hpc/modules:$MODULEPATH
 
-# bind the fuzzy finder command
-# avoid running commands that presume the session
-# is interactive when it isn't
-if [ -t 1 ]; then
-	bind '"\C-p":"nvim $(fzf-tmux -l30%)\n"'
-fi

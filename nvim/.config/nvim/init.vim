@@ -9,6 +9,7 @@ Plug 'hrsh7th/nvim-compe' "nvim autocomplete
 Plug 'windwp/nvim-autopairs' "nvim autopairing
 Plug 'tpope/vim-commentary' "vim commenting plugin
 Plug 'sainnhe/everforest' "colorscheme plugin
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline' " much nicer display bar at bottom
 Plug 'mhinz/vim-startify' " a smarter start screen
 Plug 'unblevable/quick-scope' " show hints when using F and T to navigate
@@ -83,9 +84,11 @@ nnoremap <leader>tt :NvimTreeToggle<CR>
 " Colors {{{
 syntax enable
 
-" Color settings
-if has('termguicolors') " Important!!
-	set termguicolors
+" Enable true color 
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 " The configuration options should be placed before `colorscheme forest-night`.
@@ -93,6 +96,7 @@ let g:everforest_disable_italic_comment = 1
 let g:everforest_better_performance = 1
 let g:everforest_diagnostic_virtual_text = 'colored'
 colorscheme everforest 
+" colorscheme nord 
 " }}}
 
 " Tabs and Spaces {{{

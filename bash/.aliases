@@ -18,4 +18,4 @@ alias vpnst="/opt/cisco/anyconnect/bin/vpn status"
 # Aliases for tmux
 # ---------------------------------
 
-alias tmux='tmux -2'
+# alias tmux='tmux -2'
